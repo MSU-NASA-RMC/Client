@@ -68,7 +68,7 @@ class Client:
         self.connection_thread.start()
 
     def send_message(self, message):
-        print message
+        print (message)
         if self.connection.remote_status is RemoteStatus.HANDSHAKE_SUCCESSFUL:
             self.connection.send(message)
 
@@ -217,11 +217,11 @@ if __name__ == '__main__':
                         required=False, type=int, default=str(DEFAULT_BUFFER_SIZE))
     args = parser.parse_args()
 
-    print 'clientIpAddress:', args.clientIPAddress
-    print 'clientPortNumber:', args.clientPortNumber
-    print 'controllerIpAddress:', args.controllerIPAddress
-    print 'controllerPortNumber:', args.controllerPortNumber
-    print 'bufferSize:', args.bufferSize
+    print ('clientIpAddress:', args.clientIPAddress)
+    print ('clientPortNumber:', args.clientPortNumber)
+    print ('controllerIpAddress:', args.controllerIPAddress)
+    print ('controllerPortNumber:', args.controllerPortNumber)
+    print ('bufferSize:', args.bufferSize)
 
     main(args.clientIPAddress, args.clientPortNumber,
          args.controllerIPAddress, args.controllerPortNumber,
