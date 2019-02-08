@@ -36,7 +36,7 @@ class Window(QMainWindow, Ui_MainWindow):
         self.show()
 
     def on_message_return(self, message):
-        print message
+        print (message)
 
     def on_connection_button(self):
         if self.connection_button.text() == "open connection":
@@ -106,13 +106,13 @@ class Window(QMainWindow, Ui_MainWindow):
             # Motor speed adjustment mode logic
             elif key == QtCore.Qt.Key_1:
                 self.motor_speed_to_adjust = client.Motor.DRIVE_MOTORS.value
-                print 'Motor speed adjustment mode:', str(self.motor_speed_to_adjust)
+                print ('Motor speed adjustment mode:', str(self.motor_speed_to_adjust))
             elif key == QtCore.Qt.Key_2:
                 self.motor_speed_to_adjust = client.Motor.ACTUATOR.value
-                print 'Motor speed adjustment mode:', str(self.motor_speed_to_adjust)
+                print ('Motor speed adjustment mode:', str(self.motor_speed_to_adjust))
             elif key == QtCore.Qt.Key_3:
                 self.motor_speed_to_adjust = client.Motor.BUCKET.value
-                print 'Motor speed adjustment mode:', str(self.motor_speed_to_adjust)
+                print ('Motor speed adjustment mode:', str(self.motor_speed_to_adjust))
 
             # Actuator logic
             elif key == QtCore.Qt.Key_U:
@@ -143,7 +143,7 @@ class Window(QMainWindow, Ui_MainWindow):
                     self.client.set_actuator_speed(self.client.get_actuator_speed() + 1)
                 elif self.motor_speed_to_adjust is 2:
                     self.client.set_bucket_speed(self.client.get_bucket_speed() + 1)
-                print self.client.motor_speeds[self.motor_speed_to_adjust]
+                print (self.client.motor_speeds[self.motor_speed_to_adjust])
                 self.update_motor_speeds()
                 if len(self.drive_keys_pressed):
                     self.keyPressEvent(Qt.QKeyEvent(Qt.QEvent.KeyPress, self.drive_keys_pressed[-1],
@@ -156,7 +156,7 @@ class Window(QMainWindow, Ui_MainWindow):
                     self.client.set_actuator_speed(self.client.get_actuator_speed() - 1)
                 elif self.motor_speed_to_adjust is 2:
                     self.client.set_bucket_speed(self.client.get_bucket_speed() - 1)
-                print self.client.motor_speeds[self.motor_speed_to_adjust]
+                print (self.client.motor_speeds[self.motor_speed_to_adjust])
                 self.update_motor_speeds()
                 if len(self.drive_keys_pressed):
                     self.keyPressEvent(Qt.QKeyEvent(Qt.QEvent.KeyPress, self.drive_keys_pressed[-1],
